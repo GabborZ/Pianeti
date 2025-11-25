@@ -81,14 +81,20 @@ div.sistema-solare {
   background-color: #e5e5e5ff;
 }
 
-.pianeta-container__card--boundary-left {
-  margin-left: 0;
+/* prime e ultime card di ogni riga da 3 */
+.pianeta-container__card:nth-child(3n+1),
+.pianeta-container__card:nth-child(3n) {
   width: calc(33.333333% - 10px);
 }
 
-.pianeta-container__card--boundary-right {
+/* card di sinistra (1a, 4a, 7a, ...) */
+.pianeta-container__card:nth-child(3n+1) {
+  margin-left: 0;
+}
+
+/* card di destra (3a, 6a, 9a, ...) */
+.pianeta-container__card:nth-child(3n) {
   margin-right: 0;
-  width: calc(33.333333% - 10px);
 }
 
 .pianeta-container__card h2 {
