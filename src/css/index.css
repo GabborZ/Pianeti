@@ -119,6 +119,7 @@ div.sistema-solare {
 
 .pianeta-container__body {
   padding: 0 20px;
+  min-height: 180px; 
 }
 
 div#footer {
