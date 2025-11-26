@@ -6,6 +6,10 @@
 
 @import url("https://fonts.googleapis.com/css2?family=EB+Garamond&display=swap");
 
+html {
+  font-size: 16px;
+}
+
 * {
   box-sizing: border-box;
 }
@@ -26,21 +30,30 @@ abbr {
 
 div#header {
   min-height: 250px;
-  background-color: #14213dff;
+  /* [5] ELIMINATO il background color */
+  /*  background-color: #14213dff; */
   line-height: 250px;
+  /* [5] AGgiunto il gradiente radiale */
+  background-image: radial-gradient(
+    circle 100px at 50% 50%,
+    #d4d11f4e,
+    #d4d11fcf 80px,
+    rgb(79, 79, 4) 90px,
+    #14213dff
+  );
 }
 
 .sistema-solare__title {
   text-align: center;
   margin: 0;
-  font-size: 40px;
+  font-size: 2.5rem; /* invece di 40px */
   color: #14213dff;
   text-transform: capitalize;
 }
 
 .sistema-solare__title--principale {
   color: #fca311ff;
-  font-size: 60px;
+  font-size: 3.75rem; /* invece di 60px */
   text-transform: uppercase;
   word-spacing: 3px;
   text-shadow: 2px 2px 2px #e5e5e5ff;
@@ -68,32 +81,40 @@ div.sistema-solare {
 
 .pianeta-container {
   margin: 20px 0 0;
-  font-size: 0;
+}
+
+.pianeta-container::after {
+  content: "";
+  display: block;
+  clear: both;
 }
 
 .pianeta-container__card {
-  width: calc(33.333333% - 20px);
+  width: calc(33.333333% - 13.333333px);
   border: 2px solid black;
-  padding: 0;
-  display: inline-block;
-  font-size: 16px;
+  /* padding: 0; */
+  float: left;
+  /* display: inline-block; */
+  font-size: 1rem; /* invece di 16px */
   margin: 0 10px 20px;
   background-color: #e5e5e5ff;
+  box-shadow: 0 0 10px #fca311ff;
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+  text-align: center;
 }
 
-/* prime e ultime card di ogni riga da 3 */
-.pianeta-container__card:nth-child(3n+1),
-.pianeta-container__card:nth-child(3n) {
-  width: calc(33.333333% - 10px);
+.pianeta-container__card:hover {
+  box-shadow: 0 0 18px #fca311ff;
+  transform: translateY(-4px);
 }
 
 /* card di sinistra (1a, 4a, 7a, ...) */
-.pianeta-container__card:nth-child(3n+1) {
+div.pianeta-container__card:nth-child(3n + 1) {
   margin-left: 0;
 }
 
 /* card di destra (3a, 6a, 9a, ...) */
-.pianeta-container__card:nth-child(3n) {
+div.pianeta-container__card:nth-child(3n) {
   margin-right: 0;
 }
 
@@ -107,25 +128,44 @@ div.sistema-solare {
 }
 
 .pianeta-container__head {
-  padding: 20px 0 20px;
+  padding: 20px 0;
   margin-bottom: 20px;
   border-bottom: 2px ridge black;
   background-color: #fca311ff;
 }
 
-.pianeta-container__footer {
-  margin-top: 20px;
-  border-top: 2px ridge black;
-  padding: 20px 0 20px;
-  text-align: center;
+.pianeta-container__card:hover .pianeta-container__head {
+  background-color: #14213dff;
+  color: #fca311ff;
+  border-bottom-color: #14213dff;
+  transition: 0.3s ease;
+}
+
+div.pianeta-container__footer span  {
+  margin:0 20px 20px;
+  border-top: none; /* niente linea in alto */
+  display: inline-block; /* si restringe al testo */
+  padding: 8px 22px; /* spazio per la pill */
+  background-color: #fca311ff; /* colore di base pill */
+  border-radius: 999px; /* pill shape */
   color: #14213dff;
-  font-size: 20px;
+  font-size: 1.1rem;
+  font-weight: 400;
   cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease,
+    font-size 0.3s ease, font-weight 0.3s ease;
+}
+
+div.pianeta-container__footer span:hover {
+  background-color: #14213dff; /* pill cambia colore */
+  color: #fca311ff; /* testo in contrasto */
+  transform: scale(1.12); /* un filo più grande */
 }
 
 .pianeta-container__body {
   padding: 0 20px;
-  min-height: 180px; 
+  min-height: 250px;
+  overflow: hidden;
 }
 
 div#footer {
@@ -144,5 +184,9 @@ dd {
 }
 
 dt {
-  min-width: 150px;
+  min-width: 9.375rem;
+}
+
+.clearfix {
+  clear: both;
 }
